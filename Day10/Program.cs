@@ -1,7 +1,5 @@
 ﻿using Common;
 
-using Pos = (int x, int y);
-
 namespace Day10;
 
 class Program {
