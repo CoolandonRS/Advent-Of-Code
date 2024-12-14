@@ -3,34 +3,7 @@ using System.Numerics;
 
 namespace Common;
 
-using Pos = (int x, int y);
-using LongPos = (long x, long y);
-
-
-
 public static class Extensions {
-    // int pos logic
-    public static Pos Mul(this Pos pos, int other) => (pos.x * other, pos.y * other);
-    public static Pos Mul(this Pos pos, Pos other) => (pos.x * other.x, pos.y * other.y);
-    public static Pos Add(this Pos pos, int other) => (pos.x + other, pos.y + other);
-    public static Pos Add(this Pos pos, Pos other) => (pos.x + other.x, pos.y + other.y);
-    public static Pos Sub(this Pos pos, int other) => (pos.x - other, pos.y - other);
-    public static Pos Sub(this Pos pos, Pos other) => (pos.x - other.x, pos.y - other.y);
-    
-    public static bool EitherGreater(this Pos pos, int other) => pos.x > other || pos.y > other;
-    public static bool EitherGreater(this Pos pos, Pos other) => pos.x > other.x || pos.y > other.y;
-    // long pos logic
-    public static LongPos Mul(this LongPos pos, long other) => (pos.x * other, pos.y * other);
-    public static LongPos Mul(this LongPos pos, LongPos other) => (pos.x * other.x, pos.y * other.y);
-    public static LongPos Add(this LongPos pos, long other) => (pos.x + other, pos.y + other);
-    public static LongPos Add(this LongPos pos, LongPos other) => (pos.x + other.x, pos.y + other.y);
-    public static LongPos Sub(this LongPos pos, long other) => (pos.x - other, pos.y - other);
-    public static LongPos Sub(this LongPos pos, LongPos other) => (pos.x - other.x, pos.y - other.y);
-    
-    public static bool EitherGreater(this LongPos pos, long other) => pos.x > other || pos.y > other;
-    public static bool EitherGreater(this LongPos pos, LongPos other) => pos.x > other.x || pos.y > other.y;
-    // other
-    
     public static Pos[] Adjacent(this Pos initial) => [
         initial.Move(Orthogonal.N),
         initial.Move(Orthogonal.E),
@@ -47,10 +20,10 @@ public static class Extensions {
 
     public static Pos Move(this Pos pos, Orthogonal dir) {
         return dir switch {
-            Orthogonal.N => (pos.x - 1, pos.y),
-            Orthogonal.E => (pos.x, pos.y + 1),
-            Orthogonal.S => (pos.x + 1, pos.y),
-            Orthogonal.W => (pos.x, pos.y - 1),
+            Orthogonal.N => pos with {X = pos.X - 1},
+            Orthogonal.E => pos with {Y = pos.Y + 1},
+            Orthogonal.S => pos with {X = pos.X + 1},
+            Orthogonal.W => pos with {Y = pos.Y - 1},
             _ => throw new InvalidEnumArgumentException()
         };
     }
