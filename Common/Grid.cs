@@ -1,7 +1,5 @@
 ﻿namespace Common;
 
-using Pos = (int x, int y);
-
 public class Grid<T> {
     private T[,] _grid;
 
@@ -11,8 +9,8 @@ public class Grid<T> {
     }
 
     public T this[Pos pos] {
-        get => this[pos.x, pos.y];
-        set => this[pos.x, pos.y] = value;
+        get => _grid[pos.X, pos.Y];
+        set => _grid[pos.X, pos.Y] = value;
     }
 
     public IEnumerable<(Pos pos, T val)> ToIndexedEnumerable() {
