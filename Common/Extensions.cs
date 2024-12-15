@@ -27,6 +27,16 @@ public static class Extensions {
             _ => throw new InvalidEnumArgumentException()
         };
     }
+    
+    public static Orthogonal ToOrthogonal(this char c) {
+        return c switch {
+            '^' or 'N' => Orthogonal.N,
+            '>' or 'E' => Orthogonal.E,
+            'v' or 'S' => Orthogonal.S,
+            '<' or 'W' => Orthogonal.W,
+            _ => throw new InvalidCastException($"Can't convert '{c}' to Orthogonal")
+        };
+    }
 
     public static Orthogonal Inverse(this Orthogonal dir) {
         return dir switch {
