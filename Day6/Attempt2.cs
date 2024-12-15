@@ -13,6 +13,8 @@ using Map = ITile[,];
 using Pos = (int x, int y);
 using Guard = ((int x, int y) Pos, Direction Dir);
 
+// TODO: refactor to using Common.Grid<T> for legibility. Most of Grid<T>'s code comes from here anyway.
+
 // the reason this one has so much fun printing code is because I was stuck on it and I didn't know what else to do.
 // It should also be noted that the reason Common isn't used here is that it was born on Day 10.
 public static class Attempt2 {

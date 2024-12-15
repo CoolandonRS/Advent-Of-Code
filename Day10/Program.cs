@@ -4,7 +4,7 @@ namespace Day10;
 
 class Program {
     static void Main(string[] args) {
-        var grid = new Grid<int>(File.ReadAllLines("../../../input.txt"), c => int.Parse(c.ToString()));
+        var grid = new Grid<int>(File.ReadAllLines("../../../input.txt"), (c, _) => int.Parse(c.ToString()));
         
         var trailheads = grid.IndicesOf(0);
         

@@ -4,7 +4,7 @@ namespace Day12;
 
 class Program {
     static void Main(string[] args) {
-        var grid = new Grid<char>(File.ReadAllLines("../../../input.txt"), c => c);
+        var grid = new Grid<char>(File.ReadAllLines("../../../input.txt"), (c, _) => c);
 
         var claimed = new HashSet<Pos>();
 
